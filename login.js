@@ -60,7 +60,7 @@ app.post('/registration',async function(req,res){
             let token = jwt.sign({email:email,userid:user._id},"shhhh");
             res.cookie("token",token);           
              
-            res.redirect('/login');          
+            res.render("login",{error:"Invalid Username and Password"});        
         });
     })
 })
@@ -71,8 +71,7 @@ app.post('/login',async function(req,res){
     if(!user) return res.status(500).send("Something went wrong");
     bcrypt.compare(password,user.password,function(err,result){
         if(result) {
-            let token = jwt.sign({email,userid:user._id},"shhhh");
-            
+            let token = jwt.sign({email,userid:user._id},"shhhh");            
             res.cookie("token",token);
             res.status(200).redirect("/homepage");
         }
