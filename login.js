@@ -32,6 +32,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage })
 
+app.get('/',(req,res) => {
+    res.redirect("/registration");
+});
 
 app.get('/registration',(req,res) => {
     res.render("registration");
