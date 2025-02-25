@@ -1,6 +1,8 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
-mongoose.connect("mongodb+srv://shrutivaishy610:Kushagra@2107@cluster0.6bxwfsi.mongodb.net/bookdirectory")
+mongoose.connect(process.env.mongodb)
 .then(()=>console.log('Connected to the Database'))
 .catch(err=>console.log(err));
 
